@@ -22,8 +22,8 @@ module ForemanDefaultHostgroup
 
     config.to_prepare do
       begin
-        ::Host::Base.include DefaultHostgroupBaseHostPatch
-        ::Host::Managed.prepend DefaultHostgroupBaseHostPatch::ManagedOverrides
+        ::HostFactImporter.include DefaultHostgroupBaseHostPatch
+        ::HostFactImporter.prepend DefaultHostgroupBaseHostPatch::ManagedOverrides
       rescue StandardError => e
         Rails.logger.warn "ForemanDefaultHostgroup: skipping engine hook (#{e})"
       end
